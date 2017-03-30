@@ -16,7 +16,7 @@ class CoreDataStack {
     
     // MARK: - Core Data stack
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "EMDb")
+        let container = NSPersistentContainer(name: "App_CMDB")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")

@@ -93,7 +93,7 @@ class LocalCoreDataService {
         let sortDescriptor = NSSortDescriptor(key: "order", ascending: true)
         request.sortDescriptors = [sortDescriptor]
         
-        let customPredicate = NSPredicate(format: "favorite = \(false)")
+        let customPredicate = NSPredicate(format: "favorito = \(false)")
         request.predicate = customPredicate
         
         do{
@@ -117,7 +117,7 @@ class LocalCoreDataService {
         let context = stack.persistentContainer.viewContext
         let request : NSFetchRequest<MovieManager> = MovieManager.fetchRequest()
         
-        let customPredicate = NSPredicate(format: "favorite = \(false)")
+        let customPredicate = NSPredicate(format: "favorito = \(false)")
         request.predicate = customPredicate
         
         do{
@@ -140,7 +140,7 @@ class LocalCoreDataService {
         
         let context = stack.persistentContainer.viewContext
         let request : NSFetchRequest<MovieManager> = MovieManager.fetchRequest()
-        let customPredicate = NSPredicate(format: "id = \(id ) and favorite = \(favorite)")
+        let customPredicate = NSPredicate(format: "id = \(id) and favorito = \(favorite)")
         request.predicate = customPredicate
         
         
@@ -203,7 +203,7 @@ class LocalCoreDataService {
         
         let context = stack.persistentContainer.viewContext
         let request : NSFetchRequest<MovieManager> = MovieManager.fetchRequest()
-        let customPredicate = NSPredicate(format: "favorite = \(false)")
+        let customPredicate = NSPredicate(format: "favorito = \(false)")
         request.predicate = customPredicate
         //una vez que se hace el insert y el update debemos saber quw todos pasan a sync true
         do{

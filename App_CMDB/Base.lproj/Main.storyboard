@@ -12,7 +12,7 @@
         <!--Top Peliculas iTunes-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="App_CMDB" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ListViewController" customModule="App_CMDB" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -28,14 +28,14 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hlB-K6-cgf">
                                 <rect key="frame" x="0.0" y="108" width="375" height="510"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jx7-QU-Oy6">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="jx7-QU-Oy6">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="pRs-r2-5fu">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="movieCell" id="pRs-r2-5fu" customClass="MovieCustomCell" customModule="App_CMDB" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="113" height="170"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -59,6 +59,7 @@
                                         </constraints>
                                         <size key="customSize" width="113" height="170"/>
                                         <connections>
+                                            <outlet property="myImageMovie" destination="RwH-wZ-lLG" id="TRQ-mG-ONT"/>
                                             <segue destination="Oie-Ab-2l6" kind="show" identifier="detalleSegue" id="cJy-Xw-04e"/>
                                         </connections>
                                     </collectionViewCell>
@@ -77,6 +78,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Top Peliculas iTunes" id="qu7-as-bh4"/>
+                    <connections>
+                        <outlet property="myCollectionView" destination="hlB-K6-cgf" id="AFm-c8-bOb"/>
+                        <outlet property="mySearchBar" destination="llP-gx-icw" id="Yer-8I-3TU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -104,7 +109,7 @@
         <!--Marcadas para ver-->
         <scene sceneID="ALH-81-wqM">
             <objects>
-                <viewController id="nnh-CA-y0u" customClass="ViewController" customModule="App_CMDB" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nnh-CA-y0u" customClass="FavoritosViewController" customModule="App_CMDB" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oTa-rO-loN"/>
                         <viewControllerLayoutGuide type="bottom" id="zL6-68-26e"/>
@@ -117,14 +122,14 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3Fi-ui-dc2">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="3Fi-ui-dc2">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="K83-uO-llE">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="movieCell" id="K83-uO-llE" customClass="MovieCustomCell" customModule="App_CMDB" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="113" height="170"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -148,6 +153,7 @@
                                         </constraints>
                                         <size key="customSize" width="113" height="170"/>
                                         <connections>
+                                            <outlet property="myImageMovie" destination="mSN-KO-TIa" id="V8Q-kR-xaL"/>
                                             <segue destination="Oie-Ab-2l6" kind="show" identifier="detalleSegue" id="Z1Q-rX-RGd"/>
                                         </connections>
                                     </collectionViewCell>
@@ -157,15 +163,18 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Marcadas para ver" id="w0h-LN-c5G"/>
+                    <connections>
+                        <outlet property="myCollectionView" destination="egQ-dr-tQR" id="Cwn-hL-4wH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Icz-4l-2x4" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2328.8000000000002" y="1539.5802098950526"/>
         </scene>
-        <!--View Controller-->
+        <!--Detalle Pelicula View Controller-->
         <scene sceneID="hNx-sQ-9X6">
             <objects>
-                <viewController id="Oie-Ab-2l6" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetallePeliculaViewController" id="Oie-Ab-2l6" customClass="DetallePeliculaViewController" customModule="App_CMDB" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oj3-7M-DBy"/>
                         <viewControllerLayoutGuide type="bottom" id="Rdp-aT-TYj"/>
@@ -313,6 +322,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="5SL-5D-s7s" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="jT4-vs-QD9">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>

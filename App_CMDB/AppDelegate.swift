@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBar.tintColor = CONSTANTES.COLORES_BASE.COLOR_BLANCO_GENERAL
         tabBar.barTintColor = CONSTANTES.COLORES_BASE.COLOR_GRIS_TAB_NAV_BAR
         
-            }
+    }
     
     
     
