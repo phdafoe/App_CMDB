@@ -12,7 +12,6 @@ extension MovieManager{
     
     //lo que conseguimos con esto es que sobre cualquier objeto manage podra ejecutar el retorno de un objeto del tipo MovieModel
     func mappedObject() -> MovieModel {
-    
         return MovieModel(pId: self.id!,
                           pTitle: self.title!,
                           pOrder: Int(self.order),
