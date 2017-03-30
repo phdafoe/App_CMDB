@@ -12,6 +12,17 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Prueba 1
+        let remote = RemoteItunesMoviewService()
+        remote.getTopMovies { (result) in
+            if let resultDes = result{
+                print(resultDes.count)
+            }
+        }
+        
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
