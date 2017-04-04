@@ -222,6 +222,78 @@ class LocalCoreDataService {
         }
     }
     
+    //9
+    func getFavoriteMovies() -> [MovieModel]? {
+        
+        let context = stack.persistentContainer.viewContext
+        let request : NSFetchRequest<MovieManager> = MovieManager.fetchRequest()
+        
+        let customPredicate = NSPredicate(format: "favorito = \(true)")
+        request.predicate = customPredicate
+        
+        do{
+            let fetchMovies = try context.fetch(request)
+            var movies = [MovieModel]()
+            
+            for c_movieData in fetchMovies{
+                movies.append(c_movieData.mappedObject())
+            }
+            return movies
+            
+        }catch{
+            print("Error miestras obtenemos favoritos")
+            return nil
+        }
+    }
+    
+    //10
+    func isMovieFavorite(_ movie : MovieModel) -> Bool{
+        if let _ = getMovieById(movie.id!, favorite: true){
+            return true
+        }else{
+            return false
+        }
+    }
+    
+    
+    //11
+    func markUnMarkFavorite(_ movie : MovieModel){
+        
+        let context = stack.persistentContainer.viewContext
+        if let existe = getMovieById(movie.id!, favorite: true){
+            context.delete(existe)
+        }else{
+            let favorito = MovieManager(context: context)
+            favorito.id = movie.id!
+            favorito.title = movie.title!
+            favorito.summary = movie.summary!
+            favorito.category = movie.category!
+            favorito.director = movie.director!
+            favorito.image = movie.image!
+            favorito.favorito = true
+            
+            do{
+                try context.save()
+                
+            }catch{
+                print("error miestras marcamos como favorito")
+            }
+        }
+        //actualizamos el Badge
+        udpateFavoriteBadge()
+    }
+    
+    //12
+    func udpateFavoriteBadge(){
+        if let totalFavoritos = getFavoriteMovies()?.count{
+            let customNotification  = Notification(name: Notification.Name("updateFavoritesBadgeNotification"),
+                                             object: totalFavoritos,
+                                             userInfo: nil)
+            
+            NotificationCenter.default.post(customNotification)
+        }
+    }
+    
     
     
     

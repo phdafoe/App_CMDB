@@ -77,7 +77,9 @@
                             <constraint firstItem="hlB-K6-cgf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="uKe-Rp-lVU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Top Peliculas iTunes" id="qu7-as-bh4"/>
+                    <navigationItem key="navigationItem" title="Top Peliculas iTunes" id="qu7-as-bh4">
+                        <barButtonItem key="backBarButtonItem" title=" " id="05k-au-Tml"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="myCollectionView" destination="hlB-K6-cgf" id="AFm-c8-bOb"/>
                         <outlet property="mySearchBar" destination="llP-gx-icw" id="Yer-8I-3TU"/>
@@ -162,7 +164,9 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Marcadas para ver" id="w0h-LN-c5G"/>
+                    <navigationItem key="navigationItem" title="Marcadas para ver" id="w0h-LN-c5G">
+                        <barButtonItem key="backBarButtonItem" title=" " id="XQb-f1-S3p"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="myCollectionView" destination="egQ-dr-tQR" id="Cwn-hL-4wH"/>
                     </connections>
@@ -244,6 +248,9 @@
                                         <state key="normal" title="No me interesa" backgroundImage="btn-off">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="peliculaFavoritaACTION:" destination="Oie-Ab-2l6" eventType="touchUpInside" id="ChM-er-rkH"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.22974012305699487" green="0.22974012305699487" blue="0.22974012305699487" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -292,6 +299,14 @@
                             <constraint firstItem="vJw-RF-sYb" firstAttribute="top" secondItem="mH3-MX-Agw" secondAttribute="bottom" constant="20" id="vnH-5A-sgC"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="myButtonBTN" destination="m5T-OI-x0c" id="Swz-Tt-mXS"/>
+                        <outlet property="myCategoriaPelicula" destination="ecz-dH-ekU" id="Q8T-es-4XV"/>
+                        <outlet property="myDirectorPelicula" destination="fto-dM-LNU" id="Hgv-Ka-o8l"/>
+                        <outlet property="myImagePelicula" destination="015-dB-cOe" id="Lqj-mF-9Lj"/>
+                        <outlet property="mySinopsisTV" destination="Dxs-ti-fZr" id="9zr-i2-ZM5"/>
+                        <outlet property="myTituloPelicula" destination="h5I-9y-w8D" id="PXR-9b-B6C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w4k-Cd-7lf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -18,8 +18,6 @@ class FavoritosViewController: UIViewController {
     let dataProvider = LocalCoreDataService()
     var tapGR : UITapGestureRecognizer!
     
-    
-    
     //MARK: - IBOutltes
     @IBOutlet weak var myCollectionView: UICollectionView!
     
@@ -27,6 +25,9 @@ class FavoritosViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Ajustes del espacio superior de la collecion view
+        automaticallyAdjustsScrollViewInsets = false
         
         setupPadding()
         
@@ -36,6 +37,13 @@ class FavoritosViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadData()
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -88,6 +96,14 @@ extension FavoritosViewController : UICollectionViewDelegate, UICollectionViewDa
     
     //5
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        if movies.count > 0{
+            myCollectionView.backgroundView = UIView()
+        }else{
+            let imageView = UIImageView(image: #imageLiteral(resourceName: "sin-favoritas"))
+            imageView.contentMode = .center
+            myCollectionView.backgroundView = imageView
+        }
         return movies.count
     }
     
@@ -104,6 +120,11 @@ extension FavoritosViewController : UICollectionViewDelegate, UICollectionViewDa
         return CGSize(width: 113, height: 170)
     }
     
+    //8
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+    }
+    
     
     
     //MARK: - Utils
@@ -116,6 +137,28 @@ extension FavoritosViewController : UICollectionViewDelegate, UICollectionViewDa
                                           completionHandler: nil)
         }
     }
+    
+    func loadData(){
+        if let movieData = dataProvider.getFavoriteMovies(){
+            movies = movieData
+            myCollectionView.reloadData()
+        }
+    }
+    
+    //MARK: - NAVEGACION
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detalleSegue"{
+            //seleccionamos la celda
+            if let indexPathSelected = myCollectionView.indexPathsForSelectedItems?.last{
+                let selectedMovie = movies[indexPathSelected.row]
+                let detalleVC = segue.destination as! DetallePeliculaViewController
+                detalleVC.movie = selectedMovie
+            }
+        }
+    }
+
+    
+    
     
 }
 

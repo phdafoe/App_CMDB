@@ -54,6 +54,9 @@ class ListViewController: UIViewController {
     
     
     
+    
+    
+    
 
     
 
@@ -103,8 +106,13 @@ extension ListViewController : UICollectionViewDelegate, UICollectionViewDataSou
     
     //7
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
         return CGSize(width: 113, height: 170)
+        
     }
+    
+    
+    
     
     
     
@@ -186,6 +194,20 @@ extension ListViewController : UICollectionViewDelegate, UICollectionViewDataSou
             }else{
                 print("No hay registros en CoreData")
             }
+        }
+    }
+    
+    
+    //MARK: - NAVEGACION
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detalleSegue"{
+            //seleccionamos la celda
+            if let indexPathSelected = myCollectionView.indexPathsForSelectedItems?.last{
+                let selectedMovie = movies[indexPathSelected.row]
+                let detalleVC = segue.destination as! DetallePeliculaViewController
+                detalleVC.movie = selectedMovie
+            }
+            hideKeyboard()
         }
     }
     

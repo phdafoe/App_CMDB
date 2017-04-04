@@ -32,7 +32,7 @@ class RemoteItunesMoviewService{
                         
                         var movieDiccioanrio = [String : String]()
                         movieDiccioanrio["id"] = c_entry["id"]["attributes"]["im:id"].stringValue
-                        movieDiccioanrio["title"] = c_entry["im_name"]["label"].stringValue
+                        movieDiccioanrio["title"] = c_entry["im:name"]["label"].stringValue
                         movieDiccioanrio["summary"] = c_entry["summary"]["label"].stringValue
                         movieDiccioanrio["image"] = c_entry["im:image"][0]["label"].stringValue.replacingOccurrences(of: "60x60", with: "500x500")
                         movieDiccioanrio["category"] = c_entry["category"]["attributes"]["label"].stringValue

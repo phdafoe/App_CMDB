@@ -19,6 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         personalizarUI()
         
+        //Notificacion
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateFavoritesBadgeNotification(_:)),
+                                               name: NSNotification.Name("updateFavoritesBadgeNotification"),
+                                               object: nil)
+        
+        let dataProvider = LocalCoreDataService()
+        dataProvider.udpateFavoriteBadge()
+        
         return true
     }
 
@@ -55,6 +64,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBar.tintColor = CONSTANTES.COLORES_BASE.COLOR_BLANCO_GENERAL
         tabBar.barTintColor = CONSTANTES.COLORES_BASE.COLOR_GRIS_TAB_NAV_BAR
         
+    }
+    
+    //Notificacion
+    func updateFavoritesBadgeNotification(_ notification : Notification){
+    
+        let tabBarVC = self.window?.rootViewController as! UITabBarController
+        let favNavVC = tabBarVC.viewControllers?.last as! UINavigationController
+        if let total = notification.object as? Int{
+            if total != 0{
+                //asignamos el total de insignias que haya
+                favNavVC.tabBarItem.badgeValue = "\(total)"
+            }else{
+                //eliminamos el total de insignias que hay
+                favNavVC.tabBarItem.badgeValue = nil
+            }
+        }
+        
+    
     }
     
     
