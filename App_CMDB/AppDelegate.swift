@@ -60,14 +60,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         navBar.barTintColor = CONSTANTES.COLORES_BASE.COLOR_GRIS_TAB_NAV_BAR
         navBar.tintColor = CONSTANTES.COLORES_BASE.COLOR_BLANCO_GENERAL
-        navBar.titleTextAttributes = [NSForegroundColorAttributeName : CONSTANTES.COLORES_BASE.COLOR_BLANCO_GENERAL]
+        navBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : CONSTANTES.COLORES_BASE.COLOR_BLANCO_GENERAL]
         tabBar.tintColor = CONSTANTES.COLORES_BASE.COLOR_BLANCO_GENERAL
         tabBar.barTintColor = CONSTANTES.COLORES_BASE.COLOR_GRIS_TAB_NAV_BAR
         
     }
     
     //Notificacion
-    func updateFavoritesBadgeNotification(_ notification : Notification){
+    @objc func updateFavoritesBadgeNotification(_ notification : Notification){
     
         let tabBarVC = self.window?.rootViewController as! UITabBarController
         let favNavVC = tabBarVC.viewControllers?.last as! UINavigationController

@@ -161,13 +161,13 @@ extension ListViewController : UICollectionViewDelegate, UICollectionViewDataSou
     
     
     
-    func hideKeyboard(){
+    @objc func hideKeyboard(){
         mySearchBar.resignFirstResponder()
         self.view.removeGestureRecognizer(tapGR)
     }
     
     
-    func loadData(){
+    @objc func loadData(){
         dataProvider.topMovie({ (localResult) in
             
             if let moviesData = localResult{
